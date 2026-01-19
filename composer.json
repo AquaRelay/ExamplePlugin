@@ -1,0 +1,11 @@
+{
+    "require": {
+        "aquarelay/aquarelay": "dev-master"
+    },
+    "repositories": [
+     {
+        "type": "vcs",
+        "url": "https://github.com/AquaRelay/AquaRelay"
+     }
+    ]
+}
