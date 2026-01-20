@@ -26,6 +26,7 @@ The `plugin.yml` file contains metadata about your plugin:
 name: MyPlugin
 version: 1.0.0
 main: MyPlugin\MyPlugin
+aquarelay: 1.0.0
 description: My awesome plugin
 authors:
   - YourName
@@ -38,6 +39,7 @@ soft-dependencies: []
 - `name`: Plugin name (must be unique)
 - `version`: Plugin version (semver format)
 - `main`: Full class path to your main plugin class
+- `aquarelay`: AquaRelay API version compatible with plugin
 - `description`: Short description of the plugin
 - `authors`: List of plugin authors
 - `website`: Plugin website (optional)
@@ -53,9 +55,9 @@ Create your plugin's main class extending the `Plugin` class:
 
 namespace MyPlugin;
 
-use aquarelay\plugin\PluginBase;
+use aquarelay\plugin\Plugin;
 
-class MyPlugin extends PluginBase {
+class MyPlugin extends Plugin {
 
     public function onLoad() : void
     {
@@ -93,6 +95,7 @@ class MyPlugin extends PluginBase {
 - `getPluginDescription() : string` - Get the plugin description
 - `getAuthors() : array` - Get the plugin authors
 - `getDescription() : PluginDescription` - Get the full plugin description object
+- `getScheduler() : TaskScheduler` - Get the task scheduler
 
 ### Status Methods
 

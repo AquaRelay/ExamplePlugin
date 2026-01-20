@@ -1,9 +1,9 @@
 name: ExamplePlugin
 version: 0.0.1
 main: ExamplePlugin\ExamplePlugin
+aquarelay: 1.0.0
 description: An example plugin for AquaRelay
-authors:
-  - AquaRelay Team
+author: AquaRelay Team
 website: https://example.com
 dependencies: []
 soft-dependencies: []
