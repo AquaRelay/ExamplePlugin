@@ -19,28 +19,23 @@
  *
  */
 
-declare(strict_types=1);
+namespace ExamplePlugin\Task;
 
-namespace ExamplePlugin;
+use aquarelay\task\Task;
+use ExamplePlugin\ExamplePlugin;
 
-use aquarelay\plugin\Plugin;
-use ExamplePlugin\Task\ExampleTask;
+class ExampleTask extends Task {
 
-class ExamplePlugin extends Plugin {
+    const TASK_ID = 1;
 
-	public function onLoad() : void
-	{
-		$this->getServer()->getLogger()->info("ExamplePlugin is loading...");
-		$this->getScheduler()->scheduleRepeating(new ExampleTask($this), 20 * 30); // Run every 30 seconds
-	}
-
-	public function onEnable() : void
-	{
-		$this->getServer()->getLogger()->info("ExamplePlugin v" . $this->getVersion() . " enabled!");
-	}
-
-	public function onDisable() : void
-	{
-		$this->getServer()->getLogger()->info("ExamplePlugin disabled!");
-	}
+    public function __construct(private ExamplePlugin $plugin)
+    {
+        parent::__construct(self::TASK_ID);
+    }
+    
+    public function onRun() : void
+    {
+        $this->plugin->getServer()->getLogger()->info("ExampleTask is running... id: " . $this->getTaskId() . " Time: " . date('H:i:s'));
+        $this->cancel(); // Cancel the task after running once
+    }
 }
